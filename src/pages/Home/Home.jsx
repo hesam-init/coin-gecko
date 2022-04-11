@@ -1,12 +1,15 @@
 import { useLayoutEffect, useState } from "react";
 import { Coin } from "../../components/Coin/Coin";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import "./home.css";
+import { Loader } from "@mantine/core";
 
 const Home = () => {
   // states
   const [Coins, setCoins] = useState([]);
   const [Loading, setLoader] = useState(true);
+
+  let delayTime = 1;
 
   // fetch data
   const fetchData = async () => {
@@ -30,14 +33,15 @@ const Home = () => {
   return (
     <div className="p-3">
       {Loading ? (
-        <div className="h-screen flex justify-center items-center">
-          <ReactLoading type={"cubes"} color={"blue"} height={'10%'} width={'10%'} />
+        <div>
+          <Loader></Loader>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {Coins.map((item) => (
             <div key={item.market_cap_rank}>
               <Coin
+                waitbeforeshow={(delayTime += 50)}
                 marketcaprank={item.market_cap_rank}
                 price={item.current_price}
                 name={item.name}
