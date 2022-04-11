@@ -24,9 +24,14 @@ const Home = () => {
   }, []);
   return (
     <div className="p-5">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {Coins.map((item) => (
-          <Coin id={item.id} name={item.name} price={item.current_price} />
+          <Coin
+            id={item.id}
+            name={item.name}
+            price={item.current_price}
+            img={item.image}
+          />
         ))}
       </div>
     </div>
