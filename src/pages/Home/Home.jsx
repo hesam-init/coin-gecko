@@ -22,9 +22,11 @@ const Home = () => {
   useLayoutEffect(() => {
     fetchData();
   }, []);
+
+
   return (
     <div className="p-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {Coins.map((item) => (
           <Coin
             id={item.id}
