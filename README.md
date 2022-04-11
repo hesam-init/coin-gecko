@@ -1,5 +1,11 @@
 ## Coin Gecko Live Crypto App Using ReactJs
 
+### Guid
+
+### `tailwind`
+
+make a copy of tailwind.config.js.example and rename it to tailwind.config.js and run app
+
 ## Available Scripts : 
 
 ### `npm install`
