@@ -5,10 +5,10 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="p-5">
+    <div className="p-5 h-screen">
       <BrowserRouter>
         <Navbar />
-        <div className="mt-5">
+        <div className="mt-5 h-5/6">
           <Router />
         </div>
       </BrowserRouter>

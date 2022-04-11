@@ -7,7 +7,6 @@ const Coin = (props) => {
   const [isShown, setIsShown] = useState(false);
 
   useEffect(() => {
-    console.log(props.waitbeforeshow);
     setTimeout(() => {
       setIsShown(true);
     }, props.waitbeforeshow);
