@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 import { Coin } from "../../components/Coin/Coin";
+import "./home.css";
 
 const Home = () => {
   // states
@@ -23,17 +24,19 @@ const Home = () => {
     fetchData();
   }, []);
 
-
   return (
     <div className="p-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {Coins.map((item) => (
-          <Coin
-            id={item.id}
-            name={item.name}
-            price={item.current_price}
-            img={item.image}
-          />
+          <div key={item.market_cap_rank}>
+            <Coin
+              marketcaprank={item.market_cap_rank}
+              price={item.current_price}
+              name={item.name}
+              img={item.image}
+              id={item.id}
+            />
+          </div>
         ))}
       </div>
     </div>

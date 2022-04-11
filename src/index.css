@@ -1,3 +1,5 @@
+@import url('http://fonts.cdnfonts.com/css/roboto');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,7 +7,6 @@
 body {
   margin: 0;
   font-family: Roboto;
-  background: #000;
 }
 
 
