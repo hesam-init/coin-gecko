@@ -1,12 +1,12 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
-import "aos/dist/aos.css";
 import "./coin.css";
 
 const Coin = (props) => {
   return (
     <Link to={`/coin/${props.id}`}>
       <div
+        data-aos="fade-up"
         className="shadow-effect rounded-lg p-3 bg-white flex items-center gap-5 transition-all duration-300 ease-in-out hover:cursor-pointer hover:translate-y-1 hover:shadow h-24"
         id={props.id}
       >
