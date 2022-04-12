@@ -27,9 +27,6 @@ const Home = () => {
       }
     };
     fetchData();
-    return () => {
-      setCoins([]);
-    };
   }, []);
 
   return (

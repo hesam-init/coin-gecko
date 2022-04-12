@@ -27,9 +27,6 @@ const CoinInfo = () => {
       }
     };
     fetchData();
-    return () => {
-      setCoins([]);
-    };
   }, []);
 
   return (
