@@ -1,10 +1,11 @@
 import { useLayoutEffect, useState } from "react";
 import { AnimatedPage } from "../../components/Animated/Animated";
 import { useParams } from "react-router-dom";
+import { Loader } from "@mantine/core";
 
 const CoinInfo = () => {
   // states
-  const [Coins, setCoins] = useState([]);
+  const [Coin, setCoins] = useState([]);
   const [Loading, setLoader] = useState(true);
 
   let params = useParams();
@@ -17,8 +18,9 @@ const CoinInfo = () => {
       try {
         const response = await fetch(url);
         const json = await response.json();
-        console.log(json);
-        setLoader(false);
+        if (response.ok) {
+          setLoader(false);
+        }
         setCoins(json);
       } catch (error) {
         console.log("error", error);
@@ -32,7 +34,13 @@ const CoinInfo = () => {
 
   return (
     <AnimatedPage init="50">
-      <div className="border h-96 bg-black"></div>
+      {Loading ? (
+        <Loader />
+      ) : (
+        <div className="border h-full bg-black text-white">
+          {params.id} {Coin.name}
+        </div>
+      )}
     </AnimatedPage>
   );
 };
