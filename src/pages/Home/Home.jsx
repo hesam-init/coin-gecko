@@ -1,9 +1,9 @@
 import { useLayoutEffect, useState } from "react";
-import { Coin } from "../../components/Coin/Coin";
-import ReactLoading from "react-loading";
-import "./home.css";
 import { Loader } from "@mantine/core";
 import { Link } from "react-router-dom";
+import { Coin } from "../../components/Coin/Coin";
+import "./home.css";
+import { AnimatedPage } from "../../components/Animated/Animated";
 
 const Home = () => {
   // states
@@ -35,7 +35,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="p-3 h-full overflow-y-scroll">
+    <AnimatedPage className="p-3 h-full overflow-y-scroll" init="-50">
       {Loading ? (
         <div className="flex justify-center items-center">
           <Loader></Loader>
@@ -56,7 +56,7 @@ const Home = () => {
           ))}
         </div>
       )}
-    </div>
+    </AnimatedPage>
   );
 };
 

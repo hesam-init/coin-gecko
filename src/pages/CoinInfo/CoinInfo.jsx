@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState } from "react";
+import { AnimatedPage } from "../../components/Animated/Animated";
 import { useParams } from "react-router-dom";
 
 const CoinInfo = () => {
@@ -30,9 +31,9 @@ const CoinInfo = () => {
   }, []);
 
   return (
-    <div>
-      <div>{Coins.name}</div>
-    </div>
+    <AnimatedPage init="50">
+      <div className="border h-96 bg-black"></div>
+    </AnimatedPage>
   );
 };
 

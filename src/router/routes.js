@@ -1,13 +1,18 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { CoinInfo } from "../pages/CoinInfo/CoinInfo";
 import { Home } from "../pages/Home/Home";
 
 const Router = () => {
+  const location = useLocation();
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/coin/:id" element={<CoinInfo />} />
-    </Routes>
+    <AnimatePresence exitBeforeEnter>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/coin/:id" element={<CoinInfo />} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 
