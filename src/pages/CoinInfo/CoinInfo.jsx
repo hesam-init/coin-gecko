@@ -53,7 +53,7 @@ const CoinInfo = () => {
       {Loading ? (
         <LoadingEffect />
       ) : (
-        <div class="grid grid-cols-4 grid-rows-2 gap-2 px-5 py-5 h-full lg:h-screen">
+        <div className="grid grid-cols-4 grid-rows-2 gap-2 px-5 py-5 h-full lg:h-screen">
           {/* col 1 */}
           <motion.div
             className="row-span-2 col-span-2 rounded-lg p-5 flex flex-col gap-5 items-center justify-center dracula-bg"
