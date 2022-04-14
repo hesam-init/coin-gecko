@@ -1,9 +1,8 @@
+import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 import { AnimatedPage } from "../../components/Animated/Animated";
 import { useLayoutEffect, useState } from "react";
-import { Loader } from "@mantine/core";
 import { Coin } from "../../components/Coin/Coin";
 import "./home.css";
-import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 
 const Home = () => {
   // states
