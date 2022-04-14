@@ -3,22 +3,33 @@ import { Link } from "react-router-dom";
 import "./coin.css";
 
 const Coin = (props) => {
+  // my props
+  const { name, marketcaprank, price, img, id, symbol } = props;
+
+  // text format
+  const convertText = (text) => {
+    let name = `${text.toUpperCase()}`;
+    name = name.replaceAll("-", "");
+    return name;
+  };
+
   return (
-    <Link to={`/coin/${props.id}`}>
+    <Link to={`/coin/${id}`}>
       <div
         data-aos="fade-up"
         className="shadow-effect rounded-lg p-3 bg-white flex items-center gap-5 transition-all duration-300 ease-in-out hover:cursor-pointer hover:translate-y-1 hover:shadow h-24"
-        id={props.id}
+        id={id}
       >
         <LazyLoadImage
-          alt={props.id}
-          src={props.img}
-          className="w-12 bg-white img-shadow rounded-full"
+          alt={id}
+          src={img}
+          className="w-9 md:w-10 lg:w-12 bg-white img-shadow rounded-full"
         />
-        <span className="text-black">
-          {props.name}
-          {props.price}
-        </span>
+        <h1 className="text-black flex items-center gap-3 font-bold">
+          <span>{convertText(symbol)}</span>
+          <span>{price} $</span>
+          <span>Rank : {marketcaprank}</span>
+        </h1>
       </div>
     </Link>
   );
