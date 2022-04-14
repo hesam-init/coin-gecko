@@ -8,6 +8,7 @@ const Home = () => {
   // states
   const [Coins, setCoins] = useState([]);
   const [Loading, setLoader] = useState(true);
+  const [query, setQuery] = useState("");
 
   useLayoutEffect(() => {
     // fetch data
@@ -31,13 +32,30 @@ const Home = () => {
 
   return (
     <AnimatedPage className="p-3" init="-50">
+      <div className="bg-white mb-5 rounded-lg overflow-hidden">
+        <input
+          className="w-full p-3"
+          placeholder="Enter Crypto Name"
+          onChange={(event) => setQuery(event.target.value)}
+        />
+      </div>
+
       {Loading ? (
         <div className="h-screen flex justify-center items-center">
           <Loader />
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {Coins.map((item) => (
+          {Coins.filter((item) => {
+            if (query === "") {
+              return item;
+            } else if (
+              item.id.toLowerCase().includes(query.toLowerCase()) ||
+              item.symbol.toLowerCase().includes(query.toLowerCase())
+            ) {
+              return item;
+            }
+          }).map((item) => (
             <Coin
               marketcaprank={item.market_cap_rank}
               price={item.current_price}
