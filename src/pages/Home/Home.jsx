@@ -13,7 +13,7 @@ const Home = () => {
     // fetch data
     const fetchData = async () => {
       const url =
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=50&page=1";
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=500&page=1";
 
       try {
         const response = await fetch(url);
@@ -45,6 +45,7 @@ const Home = () => {
               img={item.image}
               id={item.id}
               key={item.market_cap_rank}
+              symbol={item.symbol}
             />
           ))}
         </div>
