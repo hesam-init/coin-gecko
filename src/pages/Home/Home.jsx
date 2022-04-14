@@ -10,6 +10,11 @@ const Home = () => {
   const [Loading, setLoader] = useState(true);
   const [query, setQuery] = useState("");
 
+  // change icon
+  let docHead = document.getElementsByTagName("head")[0];
+  let newLink = docHead.querySelector("#fav");
+  newLink.href = `https://cryptoicons.org/api/icon/eth/200`;
+
   useLayoutEffect(() => {
     // fetch data
     const fetchData = async () => {

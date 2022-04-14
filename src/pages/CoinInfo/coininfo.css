@@ -1,0 +1,8 @@
+.dracula-bg {
+  background-color: #44475a !important;
+}
+
+.info-box > a {
+  color: #3b53ec;
+  font-weight: bold;
+}
