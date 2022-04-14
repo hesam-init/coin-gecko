@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <AnimatedPage className="p-3" init="-50">
-      <div className="bg-white mb-5 rounded-lg overflow-hidden">
+      <div className="bg-white mb-5 rounded-lg overflow-hidden sticky top-5 z-50">
         <input
           className="w-full p-3"
           placeholder="Enter Crypto Name"

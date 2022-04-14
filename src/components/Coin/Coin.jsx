@@ -17,7 +17,7 @@ const Coin = (props) => {
     <Link to={`/coin/${id}`}>
       <div
         data-aos="fade-up"
-        className="shadow-effect rounded-lg p-3 flex items-center gap-5 transition-all duration-300 ease-in-out hover:cursor-pointer hover:translate-y-1 hover:shadow h-24"
+        className="shadow-effect rounded-lg p-3 px-4 flex items-center gap-5 transition-all duration-300 ease-in-out hover:cursor-pointer hover:translate-y-1 hover:shadow h-24"
         id={id}
       >
         <LazyLoadImage
