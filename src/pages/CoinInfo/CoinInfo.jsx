@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 import { AnimatedPage } from "../../components/Animated/Animated";
 import { useParams } from "react-router-dom";
-import { Loader } from "@mantine/core";
+import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 
 const CoinInfo = () => {
   // states
@@ -14,7 +14,6 @@ const CoinInfo = () => {
     // fetch data
     const fetchData = async () => {
       const url = `https://api.coingecko.com/api/v3/coins/${params.id}`;
-
       try {
         const response = await fetch(url);
         const json = await response.json();
@@ -32,9 +31,9 @@ const CoinInfo = () => {
   return (
     <AnimatedPage init="50">
       {Loading ? (
-        <Loader />
+        <LoadingEffect />
       ) : (
-        <div className="border h-full bg-black text-white">
+        <div className="border h-full text-white">
           {params.id} {Coin.name}
         </div>
       )}

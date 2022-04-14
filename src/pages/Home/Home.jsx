@@ -3,6 +3,7 @@ import { useLayoutEffect, useState } from "react";
 import { Loader } from "@mantine/core";
 import { Coin } from "../../components/Coin/Coin";
 import "./home.css";
+import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 
 const Home = () => {
   // states
@@ -41,9 +42,7 @@ const Home = () => {
       </div>
 
       {Loading ? (
-        <div className="h-screen flex justify-center items-center">
-          <Loader />
-        </div>
+        <LoadingEffect />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {Coins.filter((item) => {
