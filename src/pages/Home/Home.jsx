@@ -11,11 +11,14 @@ const Home = () => {
   const [query, setQuery] = useState("");
 
   // change icon
-  let docHead = document.getElementsByTagName("head")[0];
-  let newLink = docHead.querySelector("#fav");
-  newLink.href = `https://cryptoicons.org/api/icon/eth/200`;
+  const changeIcon = () => {
+    let docHead = document.getElementsByTagName("head")[0];
+    let newLink = docHead.querySelector("#fav");
+    newLink.href = `https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579`;
+  };
 
   useLayoutEffect(() => {
+    changeIcon();
     // fetch data
     const fetchData = async () => {
       const url =

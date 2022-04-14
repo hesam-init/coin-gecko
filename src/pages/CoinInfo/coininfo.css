@@ -6,3 +6,17 @@
   color: #3b53ec;
   font-weight: bold;
 }
+
+.info-box::-webkit-scrollbar-track {
+  padding: 5px;
+  border: none;
+}
+
+.info-box::-webkit-scrollbar {
+  width: 9px;
+}
+
+.info-box::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #3b53ec;
+}
