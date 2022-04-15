@@ -2,7 +2,7 @@
   background-color: #44475a !important;
 }
 
-.info-box > a {
+.info-box-link > a {
   color: #3b53ec;
   font-weight: bold;
 }

@@ -69,14 +69,14 @@ const CoinInfo = () => {
             <div className="flex flex-col lg:flex-row lg:h-96 w-full items-center lg:justify-between gap-5">
               {/* image */}
               <motion.div
-                initial={{ y: -10 }}
-                animate={{ y: 0 }}
+                initial={{ y: 15 }}
+                animate={{ y: -5 }}
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
                   duration: 1,
                 }}
-                className="w-48 flex justify-center items-center"
+                className="w-48 lg:w-64 flex justify-center items-center"
               >
                 <img
                   className="bg-white rounded-full p-3 w-full h-full"
@@ -132,13 +132,23 @@ const CoinInfo = () => {
             </div>
 
             {/* description */}
-            <div className="overflow-hidden rounded-xl h-full w-full">
+            <div className="overflow-hidden rounded-xl h-80 lg:h-full w-full bg-white">
               {Coin.description.en !== "" ? (
-                <div
-                  className="info-box w-full bg-white h-full text-justify p-5 overflow-y-scroll"
-                  dangerouslySetInnerHTML={{ __html: Coin.description.en }}
-                  id="infobox"
-                />
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={{ height: "100%" }}
+                  transition={{
+                    duration: 1.5,
+                    type: "spring",
+                    delay: 0.3,
+                  }}
+                  className="info-box w-full h-full text-justify p-5 overflow-y-scroll"
+                >
+                  <div
+                    className="info-box-link"
+                    dangerouslySetInnerHTML={{ __html: Coin.description.en }}
+                  />
+                </motion.div>
               ) : (
                 <div className="info-box w-full bg-white h-full text-justify p-5 flex items-center justify-center">
                   <NoInfo />
