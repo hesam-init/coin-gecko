@@ -1,16 +1,20 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLayoutEffect, useState } from "react";
+import { Input, SegmentedControl } from "@mantine/core";
 import { AnimatedPage } from "../../components/Animated/Animated";
 import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 import { NoInfo } from "../../components/NoInfo/NoInfo";
 import { currency } from "../../assets/currency/currency";
+import { SwitchIcon } from "../../assets/icons/icon";
 import "./coininfo.css";
 
 const CoinInfo = () => {
   // states
   const [Coin, setCoins] = useState([]);
   const [Loading, setLoader] = useState(true);
+  const [Value, setValue] = useState("usd");
+  const [Current, setCurrent] = useState(1);
 
   // get params
   let params = useParams();
@@ -62,7 +66,7 @@ const CoinInfo = () => {
             animate={{ opacity: 1, scale: 1 }}
           >
             {/* image and info  */}
-            <div className="flex flex-col lg:flex-row lg:h-48 w-full items-center lg:justify-between gap-5">
+            <div className="flex flex-col lg:flex-row lg:h-96 w-full items-center lg:justify-between gap-5">
               {/* image */}
               <motion.div
                 initial={{ y: -10 }}
@@ -81,8 +85,49 @@ const CoinInfo = () => {
                 />
               </motion.div>
               {/* details */}
-              <div className="bg-white rounded-xl w-full h-full flex flex-wrap flex-col p-3">
-                <div>{currency(Coin.market_data.current_price.usd)}</div>
+              <div className="bg-white rounded-xl w-full h-full flex flex-wrap flex-col items-center justify-evenly gap-5 p-5">
+                {/* amount */}
+                <Input
+                  icon={
+                    <img
+                      className="bg-white rounded-full"
+                      src={Coin.image.large}
+                      alt={params.id}
+                      width="35"
+                    />
+                  }
+                  className="w-full"
+                  type="number"
+                  placeholder="Enter amount"
+                  variant="filled"
+                  size="lg"
+                  radius="lg"
+                  onChange={(e) => {
+                    setCurrent(e.target.value);
+                  }}
+                  defaultValue={1}
+                />
+                <div className="text-dracula-primary ">
+                  <SwitchIcon />
+                </div>
+                {/* converted data */}
+                <div className="w-full flex flex-col gap-3 bg-[#f1f3f5] p-1 rounded-lg">
+                  <SegmentedControl
+                    className="rounded-t-lg"
+                    value={Value}
+                    onChange={setValue}
+                    data={[
+                      { label: "$USD", value: "usd" },
+                      { label: "€EURO", value: "eur" },
+                    ]}
+                  />
+                  <div className="text-center">
+                    {currency(
+                      Coin.market_data.current_price[Value] * Current,
+                      Value.toUpperCase()
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
 
