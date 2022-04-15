@@ -8,6 +8,7 @@ import { NoInfo } from "../../components/NoInfo/NoInfo";
 import { currency } from "../../assets/currency/currency";
 import { SwitchIcon } from "../../assets/icons/icon";
 import "./coininfo.css";
+import { NothingIcon, SocialIcon } from "../../components/Icon/Icon";
 
 const CoinInfo = () => {
   // states
@@ -159,15 +160,68 @@ const CoinInfo = () => {
 
           {/* col 2 */}
           <motion.div
-            className="col-span-4 lg:col-span-3 lg:col-start-3 rounded-lg p-3 dracula-bg"
+            className="col-span-4 lg:col-span-2 lg:col-start-3 rounded-lg p-3 dracula-bg flex flex-col gap-5"
             transition={{ duration: 0.5 }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-          ></motion.div>
+          >
+            <div className="flex w-full bg-white rounded-lg p-3">
+              <h1>Links And Socials :</h1>
+            </div>
+            <div className="rounded-lg px-3 w-full h-full flex justify-center items-center flex-wrap gap-3">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                {/* twitter */}
+                {Coin.links.twitter_screen_name !== "" ? (
+                  <SocialIcon
+                    type="fa"
+                    iconName="fa-twitter"
+                    path={`https://twitter.com/${Coin.links.twitter_screen_name}`}
+                  />
+                ) : (
+                  <NothingIcon />
+                )}
+
+                {/* reddit */}
+                {Coin.links.subreddit_url === "https://www.reddit.com" ? (
+                  ""
+                ) : Coin.links.subreddit_url !== "" ? (
+                  <SocialIcon
+                    type="fa"
+                    iconName="fa-reddit"
+                    path={Coin.links.subreddit_url}
+                  />
+                ) : (
+                  <NothingIcon />
+                )}
+
+                {/* facebook */}
+                {Coin.links.facebook_username !== "" ? (
+                  <SocialIcon
+                    type="fa"
+                    iconName="fa-facebook"
+                    path={`https://facebook.com/${Coin.links.facebook_username}`}
+                  />
+                ) : (
+                  <NothingIcon />
+                )}
+
+                {/* github */}
+                {Coin.links.repos_url.github[0] ? (
+                  <SocialIcon
+                    type="fa"
+                    iconName="fa-github"
+                    path={Coin.links.repos_url.github[0]}
+                  />
+                ) : (
+                  <NothingIcon />
+                )}
+              </div>
+            </div>
+          </motion.div>
 
           {/* col 3 */}
           <motion.div
-            className="col-span-4 lg:col-span-3 lg:col-start-3 rounded-lg p-3 dracula-bg"
+            className="col-span-4 lg:col-span-2 lg:col-start-3 rounded-lg p-3 dracula-bg"
             transition={{ duration: 0.5, type: "tween" }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
