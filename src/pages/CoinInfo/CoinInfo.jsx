@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { AnimatedPage } from "../../components/Animated/Animated";
 import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 import { NoInfo } from "../../components/NoInfo/NoInfo";
@@ -14,21 +14,6 @@ const CoinInfo = () => {
 
   // get params
   let params = useParams();
-
-  useEffect(() => {
-    // blank links
-    const linkBlank = (id) => {
-      let element = document.getElementById(`${id}`);
-      let links = element.querySelectorAll("a");
-      links.forEach((a) => {
-        a.target = "_blank";
-      });
-    };
-    
-    if (!Loading) {
-      linkBlank("infobox");
-    }
-  }, [Loading]);
 
   useLayoutEffect(() => {
     // change favico status
@@ -54,8 +39,8 @@ const CoinInfo = () => {
             `${json.image.thumb}`,
             `${json.name} ${currency(json.market_data.current_price.usd)} $`
           );
+          setCoins(json);
         }
-        setCoins(json);
       } catch (error) {
         console.log("error", error);
       }

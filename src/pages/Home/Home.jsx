@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { currency } from "../../assets/currency/currency";
 import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 import { AnimatedPage } from "../../components/Animated/Animated";
@@ -30,8 +31,8 @@ const Home = () => {
         const json = await response.json();
         if (response.ok) {
           setLoader(false);
+          setCoins(json);
         }
-        setCoins(json);
       } catch (error) {
         console.log("error", error);
       }
@@ -63,15 +64,28 @@ const Home = () => {
               return item;
             }
           }).map((item) => (
-            <Coin
-              marketcaprank={item.market_cap_rank}
-              price={currency(item.current_price)}
-              name={item.name}
-              img={item.image}
-              id={item.id}
-              key={item.market_cap_rank}
-              symbol={item.symbol}
-            />
+            <motion.div
+              transition={{ duration: 0.8, type: "spring" }}
+              initial={{ visibility: "hidden", opacity: 0, scale: 0.5, y: 25 }}
+              whileInView={{
+                visibility: "visible",
+                y: 0,
+                opacity: 1,
+                scale: 1,
+              }}
+              viewport={{ once: true }}
+              // animate={{ opacity: 1, scale: 1 }}
+            >
+              <Coin
+                marketcaprank={item.market_cap_rank}
+                price={currency(item.current_price)}
+                name={item.name}
+                img={item.image}
+                id={item.id}
+                key={item.market_cap_rank}
+                symbol={item.symbol}
+              />
+            </motion.div>
           ))}
         </div>
       )}
