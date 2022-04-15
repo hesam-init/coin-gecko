@@ -1,6 +1,7 @@
+import { useLayoutEffect, useState } from "react";
+import { currency } from "../../assets/currency/currency";
 import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 import { AnimatedPage } from "../../components/Animated/Animated";
-import { useLayoutEffect, useState } from "react";
 import { Coin } from "../../components/Coin/Coin";
 import "./home.css";
 
@@ -64,7 +65,7 @@ const Home = () => {
           }).map((item) => (
             <Coin
               marketcaprank={item.market_cap_rank}
-              price={item.current_price}
+              price={currency(item.current_price)}
               name={item.name}
               img={item.image}
               id={item.id}
