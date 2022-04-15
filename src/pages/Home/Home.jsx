@@ -11,15 +11,15 @@ const Home = () => {
   const [Loading, setLoader] = useState(true);
   const [query, setQuery] = useState("");
 
-  // change icon
-  const changeIcon = () => {
-    let docHead = document.getElementsByTagName("head")[0];
-    let newLink = docHead.querySelector("#fav");
-    newLink.href = `https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579`;
-  };
-
   useLayoutEffect(() => {
+    // change icon
+    const changeIcon = () => {
+      let docHead = document.getElementsByTagName("head")[0];
+      let newLink = docHead.querySelector("#fav");
+      newLink.href = `https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579`;
+    };
     changeIcon();
+
     // fetch data
     const fetchData = async () => {
       const url =
@@ -41,7 +41,7 @@ const Home = () => {
 
   return (
     <AnimatedPage className="p-3">
-      <div className="bg-white mb-5 rounded-lg overflow-hidden sticky top-5 z-50">
+      <div className="bg-white mb-9 rounded-xl overflow-hidden sticky top-5 z-50">
         <input
           className="w-full p-3"
           placeholder="Enter Crypto Name"

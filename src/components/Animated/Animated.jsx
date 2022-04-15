@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 
 const AnimatedPage = ({ children, className, init, exit }) => {
-  console.log(exit);
   return (
     <motion.div
       className={className}

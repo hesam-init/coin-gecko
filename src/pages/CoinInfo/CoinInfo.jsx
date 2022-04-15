@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { AnimatedPage } from "../../components/Animated/Animated";
 import { LoadingEffect } from "../../components/Loading/LoadingEffect";
 import { NoInfo } from "../../components/NoInfo/NoInfo";
@@ -15,19 +15,33 @@ const CoinInfo = () => {
   // get params
   let params = useParams();
 
-  // change favico status
-  const changeTitleInfo = (link, name) => {
-    let docHead = document.getElementsByTagName("head")[0];
-    // change fav
-    let newLink = docHead.querySelector("#fav");
-    newLink.href = `${link}`;
-    // change title
-    let newTitle = docHead.querySelector("title");
-    newTitle.innerHTML = `${name}`;
-    console.log(newLink);
-  };
+  useEffect(() => {
+    // blank links
+    const linkBlank = (id) => {
+      let element = document.getElementById(`${id}`);
+      let links = element.querySelectorAll("a");
+      links.forEach((a) => {
+        a.target = "_blank";
+      });
+    };
+    
+    if (!Loading) {
+      linkBlank("infobox");
+    }
+  }, [Loading]);
 
   useLayoutEffect(() => {
+    // change favico status
+    const changeTitleInfo = (link, name) => {
+      let docHead = document.getElementsByTagName("head")[0];
+      // change fav
+      let newLink = docHead.querySelector("#fav");
+      newLink.href = `${link}`;
+      // change title
+      let newTitle = docHead.querySelector("title");
+      newTitle.innerHTML = `${name}`;
+    };
+
     // fetch data
     const fetchData = async () => {
       const url = `https://api.coingecko.com/api/v3/coins/${params.id}`;
@@ -63,7 +77,7 @@ const CoinInfo = () => {
             animate={{ opacity: 1, scale: 1 }}
           >
             {/* image and info  */}
-            <div className="flex flex-col lg:flex-row lg:h-48 w-full items-center lg:justify-between gap-5 p-5">
+            <div className="flex flex-col lg:flex-row lg:h-48 w-full items-center lg:justify-between gap-5">
               {/* image */}
               <motion.div
                 initial={{ y: -10 }}
@@ -82,7 +96,7 @@ const CoinInfo = () => {
                 />
               </motion.div>
               {/* details */}
-              <div className="bg-white rounded-lg w-full h-full flex flex-wrap flex-col p-3">
+              <div className="bg-white rounded-xl w-full h-full flex flex-wrap flex-col p-3">
                 <div>{currency(Coin.market_data.current_price.usd)}</div>
               </div>
             </div>
@@ -93,6 +107,7 @@ const CoinInfo = () => {
                 <div
                   className="info-box w-full bg-white h-full text-justify p-5 overflow-y-scroll"
                   dangerouslySetInnerHTML={{ __html: Coin.description.en }}
+                  id="infobox"
                 />
               ) : (
                 <div className="info-box w-full bg-white h-full text-justify p-5 flex items-center justify-center">
