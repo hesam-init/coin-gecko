@@ -58,10 +58,10 @@ const CoinInfo = () => {
       {Loading ? (
         <LoadingEffect />
       ) : (
-        <div className="grid grid-cols-4 grid-rows-2 gap-2 px-5 py-5 h-full lg:h-screen">
+        <div className="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-2 gap-2 px-5 py-5 lg:h-screen">
           {/* col 1 */}
           <motion.div
-            className="col-span-4 lg:col-span-2 lg:row-span-2 rounded-lg p-5 flex flex-col gap-5 items-center justify-center dracula-bg"
+            className="col-span-1 lg:col-span-2 lg:row-span-2 rounded-lg p-5 flex flex-col gap-5 items-center justify-center dracula-bg"
             transition={{ duration: 0.5, type: "tween" }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -160,7 +160,7 @@ const CoinInfo = () => {
 
           {/* col 2 */}
           <motion.div
-            className="col-span-4 lg:col-span-2 lg:col-start-3 rounded-lg p-3 dracula-bg flex flex-col gap-5"
+            className="grid-cols-1 lg:col-span-2 rounded-lg p-3 py-5 lg:py-3 dracula-bg flex flex-col gap-5"
             transition={{ duration: 0.5 }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -182,16 +182,20 @@ const CoinInfo = () => {
                 )}
 
                 {/* reddit */}
-                {Coin.links.subreddit_url === "https://www.reddit.com" ? (
-                  ""
-                ) : Coin.links.subreddit_url !== "" ? (
-                  <SocialIcon
-                    type="fa"
-                    iconName="fa-reddit"
-                    path={Coin.links.subreddit_url}
-                  />
-                ) : (
+                {Coin.links.subreddit_url === null ? (
                   <NothingIcon />
+                ) : (
+                  <div>
+                    {Coin.links.subreddit_url !== "" ? (
+                      <SocialIcon
+                        type="fa"
+                        iconName="fa-reddit"
+                        path={Coin.links.subreddit_url}
+                      />
+                    ) : (
+                      <NothingIcon />
+                    )}
+                  </div>
                 )}
 
                 {/* facebook */}
@@ -221,7 +225,7 @@ const CoinInfo = () => {
 
           {/* col 3 */}
           <motion.div
-            className="col-span-4 lg:col-span-2 lg:col-start-3 rounded-lg p-3 dracula-bg"
+            className="grid-cols-1 lg:col-span-2 rounded-lg p-3 dracula-bg"
             transition={{ duration: 0.5, type: "tween" }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
