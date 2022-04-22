@@ -58,7 +58,7 @@ const CoinInfo = () => {
       {Loading ? (
         <LoadingEffect />
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-2 gap-2 px-5 py-5 lg:h-screen">
+        <div className="grid grid-cols-1 xl:grid-cols-4 xl:h-screen xl:grid-rows-2 gap-2 px-5 py-5">
           {/* col 1 */}
           <motion.div
             className="col-span-1 lg:col-span-2 lg:row-span-2 rounded-lg p-5 flex flex-col gap-5 items-center justify-center dracula-bg"
@@ -69,22 +69,27 @@ const CoinInfo = () => {
             {/* image and info  */}
             <div className="flex flex-col lg:flex-row lg:h-96 w-full items-center lg:justify-between gap-5">
               {/* image */}
-              <motion.div
-                initial={{ y: 15 }}
-                animate={{ y: -5 }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 1,
-                }}
-                className="w-48 lg:w-64 flex justify-center items-center"
-              >
-                <img
-                  className="bg-white rounded-full p-3 w-full h-full"
-                  src={Coin.image.large}
-                  alt={params.id}
-                />
-              </motion.div>
+              <div className="w-full lg:w-64 h-full flex flex-col justify-between items-center">
+                <motion.div
+                  initial={{ y: 5 }}
+                  animate={{ y: -5 }}
+                  transition={{
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    duration: 1,
+                  }}
+                >
+                  <img
+                    className="bg-white rounded-full p-1 w-48 h-48 xl:h-full xl:w-full"
+                    src={Coin.image.large}
+                    alt={params.id}
+                  />
+                </motion.div>
+                <div className="bg-white w-full mt-6 p-3 flex items-center justify-center rounded-lg">
+                  <h1>{Coin.name}</h1>
+                </div>
+              </div>
+
               {/* details */}
               <div className="bg-white rounded-xl w-full h-full flex flex-wrap flex-col items-center justify-evenly gap-5 p-5">
                 {/* amount */}

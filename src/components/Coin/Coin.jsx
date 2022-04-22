@@ -20,6 +20,7 @@ const Coin = (props) => {
         id={id}
       >
         <LazyLoadImage
+          alt={name}
           src={img}
           className="w-9 md:w-10 lg:w-12 h-9 md:h-10 lg:h-12 bg-white img-shadow rounded-full"
         />

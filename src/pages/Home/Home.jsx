@@ -75,6 +75,7 @@ const Home = () => {
               }}
               viewport={{ once: true }}
               // animate={{ opacity: 1, scale: 1 }}
+              key={item.id}
             >
               <Coin
                 marketcaprank={item.market_cap_rank}
