@@ -10,7 +10,7 @@ const Router = () => {
     <AnimatePresence exitBeforeEnter>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
-        <Route path="/coin/:id" element={<CoinInfo />} />
+        <Route path="/coin/:id/:symbol" element={<CoinInfo />} />
       </Routes>
     </AnimatePresence>
   );

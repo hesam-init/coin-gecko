@@ -14,7 +14,7 @@ const Coin = (props) => {
   };
 
   return (
-    <Link to={`/coin/${id}`}>
+    <Link to={`/coin/${id}/${symbol}`}>
       <div
         className="shadow-effect rounded-xl p-3 px-4 flex items-center gap-5 transition-all duration-300 ease-in-out hover:cursor-pointer hover:translate-y-1 hover:shadow h-24"
         id={id}

@@ -9,6 +9,7 @@ import { currency } from "../../assets/currency/currency";
 import { SwitchIcon } from "../../assets/icons/icon";
 import "./coininfo.css";
 import { NothingIcon, SocialIcon } from "../../components/Icon/Icon";
+import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
 const CoinInfo = () => {
   // states
@@ -58,10 +59,10 @@ const CoinInfo = () => {
       {Loading ? (
         <LoadingEffect />
       ) : (
-        <div className="grid grid-cols-1 xl:grid-cols-4 xl:h-screen xl:grid-rows-2 gap-2 px-5 py-5">
+        <div className="grid grid-cols-1 xl:grid-cols-4 xl:h-screen xl:grid-rows-5 gap-2 px-5 py-5">
           {/* col 1 */}
           <motion.div
-            className="col-span-1 lg:col-span-2 lg:row-span-2 rounded-lg p-5 flex flex-col gap-5 items-center justify-center dracula-bg"
+            className="col-span-1 lg:col-span-2 lg:row-span-full rounded-lg p-5 flex flex-col gap-5 items-center justify-center dracula-bg"
             transition={{ duration: 0.5, type: "tween" }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -163,9 +164,24 @@ const CoinInfo = () => {
             </div>
           </motion.div>
 
+          {/* col 3 */}
+          <motion.div
+            className="grid-cols-1 lg:col-span-2 min-h-screen lg:min-h-0 lg:row-span-3 rounded-lg p-3 dracula-bg"
+            transition={{ duration: 0.5, type: "tween" }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <TradingViewWidget
+              symbol={`${params.symbol.toUpperCase()}USD`}
+              theme={Themes.DARK}
+              locale="en"
+              autosize
+            />
+          </motion.div>
+
           {/* col 2 */}
           <motion.div
-            className="grid-cols-1 lg:col-span-2 rounded-lg p-3 py-5 lg:py-3 dracula-bg flex flex-col gap-5"
+            className="grid-cols-1 lg:col-span-2 lg:row-span-2 rounded-lg p-3 py-5 lg:py-3 dracula-bg flex flex-col gap-5"
             transition={{ duration: 0.5 }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -227,14 +243,6 @@ const CoinInfo = () => {
               </div>
             </div>
           </motion.div>
-
-          {/* col 3 */}
-          <motion.div
-            className="grid-cols-1 lg:col-span-2 rounded-lg p-3 dracula-bg"
-            transition={{ duration: 0.5, type: "tween" }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-          ></motion.div>
         </div>
       )}
     </AnimatedPage>
